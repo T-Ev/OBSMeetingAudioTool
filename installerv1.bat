@@ -11,8 +11,8 @@ cd _ffmpeg
 curl --location -O https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip
 echo Extracting...
 powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('ffmpeg-release-essentials.zip', '.'); }"
-ren ffmpeg-5.1.1-essentials_build ffmpeg
-echo PLEASE ADD C:\ffmpeg\bin to your PATH Variable
+ren ffmpeg-5.1.2-essentials_build ffmpeg
+echo PLEASE ADD C:\_ffmpeg\ffmpeg\bin to your PATH Variable
 echo Press Space to open path dialog...
 pause
 rundll32 sysdm.cpl,EditEnvironmentVariables
@@ -22,8 +22,10 @@ del ffmpeg-release-essentials.zip
 cd %p%
 curl -LJO https://raw.githubusercontent.com/T-Ev/OBSMeetingAudioTool/main/_obsmeetingtool.py
 curl -LJO https://raw.githubusercontent.com/T-Ev/OBSMeetingAudioTool/main/requirements.txt
-powershell.exe -nologo -noprofile -command "& { cat requirements.txt | xargs -n 1 pip install }"
 @REM cat requirements.txt | xargs -n 1 pip install
+echo Installing Modules...
+FOR /F %k in (requirements.txt) DO pip install %k
+
 echo =========================
 echo INSTALL OF TOOL COMPLETE!
 echo =========================
