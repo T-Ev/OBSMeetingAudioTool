@@ -22,7 +22,8 @@ del ffmpeg-release-essentials.zip
 cd %p%
 curl -LJO https://raw.githubusercontent.com/T-Ev/OBSMeetingAudioTool/main/_obsmeetingtool.py
 curl -LJO https://raw.githubusercontent.com/T-Ev/OBSMeetingAudioTool/main/requirements.txt
-cat requirements.txt | xargs -n 1 pip install
+powershell.exe -nologo -noprofile -command "& { cat requirements.txt | xargs -n 1 pip install }"
+@REM cat requirements.txt | xargs -n 1 pip install
 echo =========================
 echo INSTALL OF TOOL COMPLETE!
 echo =========================
