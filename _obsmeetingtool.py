@@ -84,7 +84,7 @@ def main():
         else:
             #Write translated transcript to text file
             text_file = open(audio[0:-4]+"_transcript_"+args.lang+".txt", "w")
-            n = text_file.write(result)
+            n = text_file.write(translated)
             text_file.close()
             print(args.lang+" Transcript created. Conversion Success!")
 
